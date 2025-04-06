@@ -1,4 +1,15 @@
 package com.example.service;
+import org.springframework.stereotype.Service;
 
-public class AccountService {
+import com.example.repository.AccountRepository;
+
+@Service
+public class AccountService 
+{
+    public AccountService(AccountRepository passedInRepo)
+    {
+        bob = passedInRepo;
+    }
+    private final AccountRepository bob;
+
 }
