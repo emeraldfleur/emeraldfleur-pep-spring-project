@@ -1,8 +1,12 @@
 package com.example.controller;
 
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.service.MessageService;
 import com.example.service.AccountService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+import com.example.entity.Account;
 
 
 /**
@@ -21,4 +25,10 @@ public class SocialMediaController
     }
     private final MessageService billyBob;
     private final AccountService phillyBobbyBrown;
+
+    @PostMapping("/register")
+    public ResponseEntity<Account> registerAccount(@RequestBody Account accountReceived)
+    {
+        return null;
+    } 
 }
