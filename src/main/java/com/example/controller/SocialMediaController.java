@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.service.MessageService;
 import com.example.service.AccountService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import com.example.entity.Account;
@@ -18,6 +20,7 @@ import com.example.entity.Account;
 @RestController
 public class SocialMediaController 
 {
+    @Autowired
     public SocialMediaController(MessageService externalM, AccountService externalA)
     {
         billyBob = externalM;
