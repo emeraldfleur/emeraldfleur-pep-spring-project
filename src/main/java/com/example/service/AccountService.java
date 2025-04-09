@@ -15,8 +15,14 @@ public class AccountService
     public Account registerAccount(Account account)
     {
         String username = account.getUsername();
-        if(username.isEmpty() || username == null)
+        String password = account.getPassword();
+        if(username == null || username.isBlank())
         {
+            throw new IllegalArgumentException("Username is empty or null.");
+        }
+        if(password == null || (password.length() < 4))
+        {
+            throw new IllegalArgumentException("Password is empty, null, or less than 4.");
         }
         return null;
     }
