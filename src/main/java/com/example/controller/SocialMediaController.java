@@ -36,7 +36,8 @@ public class SocialMediaController
     @PostMapping("/register")
     public ResponseEntity<Account> registerAccount(@RequestBody Account accountReceived)
     {
-        return new ResponseEntity<Account>(accountReceived, HttpStatus.OK);
+        Account philBob = phillyBobbyBrown.registerAccount(accountReceived);
+        return new ResponseEntity<Account>(philBob, HttpStatus.OK);
     } 
 
     @ExceptionHandler(IllegalArgumentException.class)
