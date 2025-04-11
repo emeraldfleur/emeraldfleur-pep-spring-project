@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.service.MessageService;
 import com.example.service.AccountService;
 
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +36,7 @@ public class SocialMediaController
     @PostMapping("/register")
     public ResponseEntity<Account> registerAccount(@RequestBody Account accountReceived)
     {
-        return null;
+        return new ResponseEntity<Account>(accountReceived, HttpStatus.OK);
     } 
 
     @ExceptionHandler(IllegalArgumentException.class)
