@@ -1,6 +1,7 @@
 package com.example.service;
 import org.springframework.stereotype.Service;
 import com.example.entity.Account;
+import com.example.exception.DuplicateUsernameException;
 import com.example.repository.AccountRepository;
 
 @Service
@@ -24,7 +25,10 @@ public class AccountService
         {
             throw new IllegalArgumentException("Password is empty, null, or less than 4.");
         }
-        
+        if(bob.existsByUsername(username))
+        {
+            throw new DuplicateUsernameException();
+        }
         return null;
     }
 
