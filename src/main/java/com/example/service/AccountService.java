@@ -29,6 +29,10 @@ public class AccountService
         {
             throw new DuplicateUsernameException();
         }
+        else
+        {
+            
+        }
         return null;
     }
 

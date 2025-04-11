@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import com.example.entity.Account;
+import com.example.exception.DuplicateUsernameException;
 
 
 /**
@@ -41,5 +42,10 @@ public class SocialMediaController
     public ResponseEntity<Object> handleIllegalArgumentException(IllegalArgumentException exception)
     {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler(DuplicateUsernameException.class)
+    public ResponseEntity<Object> handleDuplicateUsernameException(DuplicateUsernameException exception)
+    {
+        return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
 }
