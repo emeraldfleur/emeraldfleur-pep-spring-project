@@ -9,7 +9,7 @@ public class AccountService
 {
     public AccountService(AccountRepository passedInRepository)
     {
-        bob = passedInRepository;
+        accountRepo = passedInRepository;
     }
     private final AccountRepository accountRepo;
 
@@ -25,7 +25,7 @@ public class AccountService
         {
             throw new IllegalArgumentException("Password is empty, null, or less than 4.");
         }
-        if(bob.existsByUsername(username))
+        if(accountRepo.existsByUsername(username))
         {
             throw new DuplicateUsernameException();
         }
