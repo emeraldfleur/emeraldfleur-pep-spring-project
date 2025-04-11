@@ -24,6 +24,9 @@ public class AccountService
         {
             throw new IllegalArgumentException("Password is empty, null, or less than 4.");
         }
+        
         return null;
     }
+
+    public Account registerUsername(Account account)
 }
