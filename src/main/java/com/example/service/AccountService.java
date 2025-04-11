@@ -31,9 +31,9 @@ public class AccountService
         }
         else
         {
-            
+            Account phil = new Account(username, password);
+            return phil;
         }
-        return null;
     }
 
 }
