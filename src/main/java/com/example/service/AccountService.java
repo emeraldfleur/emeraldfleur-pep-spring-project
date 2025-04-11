@@ -2,8 +2,8 @@ package com.example.service;
 import org.springframework.stereotype.Service;
 import com.example.entity.Account;
 import com.example.exception.DuplicateUsernameException;
+import com.example.exception.LoginFailException;
 import com.example.repository.AccountRepository;
-import javax.security.auth.login.LoginException; //Want a non-spring exception.
 import java.util.Optional;
 
 
@@ -48,14 +48,21 @@ public class AccountService
         Optional<Account> accountQuestionMark = accountRepo.findByUsername(inputUsername); 
         if(accountQuestionMark.isPresent())
         {
-
+            Account wowRealAccount = accountQuestionMark.get();
+            if(wowRealAccount.getPassword().equals(inputPassword))
+            {
+                return wowRealAccount;
+            }
+            else
+            {
+                throw new LoginFailException();
+            }
         }
         else
         {
-            throw new LoginException();
+            throw new LoginFailException();
         }
 
-        return null;
     }
 
 }

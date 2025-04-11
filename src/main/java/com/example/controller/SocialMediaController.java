@@ -13,7 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import com.example.entity.Account;
 import com.example.exception.DuplicateUsernameException;
-import javax.security.auth.login.LoginException; //non-spring default exception
+import com.example.exception.LoginFailException;
+
 
 
 /**
@@ -59,8 +60,8 @@ public class SocialMediaController
         return new ResponseEntity<Account>(philBob, HttpStatus.OK);
     } 
     
-    @ExceptionHandler(LoginException.class)
-    public ResponseEntity<Object> handleLoginException(LoginException exception)
+    @ExceptionHandler(LoginFailException.class)
+    public ResponseEntity<Object> handleLoginFailException(LoginFailException exception)
     {
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
