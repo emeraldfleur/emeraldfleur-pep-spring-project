@@ -11,7 +11,7 @@ public class AccountService
     {
         bob = passedInRepository;
     }
-    private final AccountRepository bob;
+    private final AccountRepository accountRepo;
 
     public Account registerAccount(Account account)
     {
@@ -32,6 +32,7 @@ public class AccountService
         else
         {
             Account phil = new Account(username, password);
+            accountRepo.save(phil);
             return phil;
         }
     }
