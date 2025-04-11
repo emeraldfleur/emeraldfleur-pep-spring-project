@@ -32,7 +32,7 @@ public class AccountService
         else
         {
             Account phil = new Account(username, password);
-            accountRepo.save(phil);
+            phil = accountRepo.save(phil);
             return phil;
         }
     }
