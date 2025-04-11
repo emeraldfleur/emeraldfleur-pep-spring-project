@@ -3,6 +3,9 @@ import org.springframework.stereotype.Service;
 import com.example.entity.Account;
 import com.example.exception.DuplicateUsernameException;
 import com.example.repository.AccountRepository;
+import javax.security.auth.login.LoginException; //Want a non-spring exception.
+import java.util.Optional;
+
 
 @Service
 public class AccountService 
@@ -35,6 +38,17 @@ public class AccountService
             phil = accountRepo.save(phil);
             return phil;
         }
+    }
+
+    public Account loginAccount(Account bowWow)
+    {
+        String inputUsername = bowWow.getUsername();
+        String inputPassword = bowWow.getPassword();
+        
+        Optional<Account> accountQuestionMark = accountRepo.findByUsername(inputUsername); 
+        
+        
+        return null;
     }
 
 }

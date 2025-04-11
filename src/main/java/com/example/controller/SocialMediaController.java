@@ -40,6 +40,13 @@ public class SocialMediaController
         return new ResponseEntity<Account>(philBob, HttpStatus.OK);
     } 
 
+    @PostMapping("/login")
+    public ResponseEntity<Account> loginAccount(@RequestBody Account accountReceived)
+    {
+        Account philBob = phillyBobbyBrown.loginAccount(accountReceived);
+        return new ResponseEntity<Account>(philBob, HttpStatus.OK);
+    } 
+
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<Object> handleIllegalArgumentException(IllegalArgumentException exception)
     {
