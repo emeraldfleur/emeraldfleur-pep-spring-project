@@ -46,8 +46,15 @@ public class AccountService
         String inputPassword = bowWow.getPassword();
         
         Optional<Account> accountQuestionMark = accountRepo.findByUsername(inputUsername); 
-        
-        
+        if(accountQuestionMark.isPresent())
+        {
+
+        }
+        else
+        {
+            throw new LoginException();
+        }
+
         return null;
     }
 

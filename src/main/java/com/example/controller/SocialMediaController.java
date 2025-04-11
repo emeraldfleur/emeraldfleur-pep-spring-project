@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import com.example.entity.Account;
 import com.example.exception.DuplicateUsernameException;
+import javax.security.auth.login.LoginException; //non-spring default exception
 
 
 /**
@@ -40,13 +41,6 @@ public class SocialMediaController
         return new ResponseEntity<Account>(philBob, HttpStatus.OK);
     } 
 
-    @PostMapping("/login")
-    public ResponseEntity<Account> loginAccount(@RequestBody Account accountReceived)
-    {
-        Account philBob = phillyBobbyBrown.loginAccount(accountReceived);
-        return new ResponseEntity<Account>(philBob, HttpStatus.OK);
-    } 
-
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<Object> handleIllegalArgumentException(IllegalArgumentException exception)
     {
@@ -57,4 +51,19 @@ public class SocialMediaController
     {
         return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<Account> loginAccount(@RequestBody Account accountReceived)
+    {
+        Account philBob = phillyBobbyBrown.loginAccount(accountReceived);
+        return new ResponseEntity<Account>(philBob, HttpStatus.OK);
+    } 
+    
+    @ExceptionHandler(LoginException.class)
+    public ResponseEntity<Object> handleLoginException(LoginException exception)
+    {
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+    }
+
+    
 }
