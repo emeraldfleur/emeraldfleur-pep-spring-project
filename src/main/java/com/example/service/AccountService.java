@@ -28,5 +28,4 @@ public class AccountService
         return null;
     }
 
-    public Account registerUsername(Account account)
 }
