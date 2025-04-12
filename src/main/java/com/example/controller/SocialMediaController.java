@@ -2,6 +2,7 @@ package com.example.controller;
 
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.service.MessageService;
@@ -12,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestPart;
+
 import com.example.entity.Account;
 import com.example.entity.Message;
 import com.example.exception.DuplicateUsernameException;
@@ -88,6 +91,13 @@ public class SocialMediaController
     {
         List<Message> philBob = billyBob.retrieveMessages();
         return new ResponseEntity<List<Message>>(philBob, HttpStatus.OK);
+    } 
+
+    @GetMapping("/messages/{messageId}") // User Story 5
+    public ResponseEntity<Message> retrieveMessage(@PathVariable int messageId)
+    {
+        Message philBob = billyBob.retrieveMessage(messageId);
+        return new ResponseEntity<Message>(philBob, HttpStatus.OK);
     } 
     
 }

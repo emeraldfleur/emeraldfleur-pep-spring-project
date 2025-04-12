@@ -5,6 +5,7 @@ import com.example.exception.MessageClientError;
 import com.example.repository.AccountRepository;
 import com.example.repository.MessageRepository;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MessageService 
@@ -42,5 +43,17 @@ public class MessageService
     {
         List<Message> messageList = messageRepoOurs.findAll();
         return messageList;
+    }
+    public Message retrieveMessage(int messageId)
+    {
+        Optional<Message> bob = messageRepoOurs.findById(messageId);
+        if(bob.isEmpty())
+        {
+            return new Message();
+        }
+        else
+        {
+            return bob.get();
+        }
     }
 }
