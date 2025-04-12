@@ -69,4 +69,18 @@ public class MessageService
             return null;
         }
     }
+    public String update(int messageId, String messageText)
+    {
+        if(messageRepoOurs.existsById(messageId))
+        {
+            Message swap = messageRepoOurs.getById(messageId);
+            swap.setMessageText(messageText);
+            swap = messageRepoOurs.save(swap);
+            return "1";
+        }
+        else
+        {
+            throw new MessageClientError();
+        }
+    }
 }
