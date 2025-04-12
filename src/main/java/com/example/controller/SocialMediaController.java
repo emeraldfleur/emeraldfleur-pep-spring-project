@@ -110,8 +110,9 @@ public class SocialMediaController
     } 
 
     @PatchMapping("/messages/{messageId}") // User Story 7
-    public ResponseEntity<String> updateMessage(@PathVariable int messageId, String messageText)
+    public ResponseEntity<String> updateMessage(@PathVariable int messageId,@RequestBody Message message)
     {
+        String messageText = message.getMessageText();
         String philBob = billyBob.updateMessage(messageId, messageText);
         return new ResponseEntity<String>(philBob, HttpStatus.OK);
     } 

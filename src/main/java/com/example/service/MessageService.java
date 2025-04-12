@@ -71,11 +71,11 @@ public class MessageService
     }
     public String updateMessage(int messageId, String messageText)
     {
-        if(messageText.isBlank() || messageText.length() > 255)
+        if(messageText == null || messageText.isBlank() || (messageText.length() > 255))
         {
             throw new MessageClientError();
         }
-        if(messageRepoOurs.existsById(messageId))
+        else if(messageRepoOurs.existsById(messageId))
         {
             Message swap = messageRepoOurs.getById(messageId);
             swap.setMessageText(messageText);
