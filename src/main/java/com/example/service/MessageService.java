@@ -4,6 +4,7 @@ import com.example.entity.Message;
 import com.example.exception.MessageClientError;
 import com.example.repository.AccountRepository;
 import com.example.repository.MessageRepository;
+import java.util.List;
 
 @Service
 public class MessageService 
@@ -36,5 +37,10 @@ public class MessageService
             barb = messageRepoOurs.save(barb);
             return barb;
         }
+    }
+    public List<Message> retrieveMessages()
+    {
+        List<Message> messageList = messageRepoOurs.findAll();
+        return messageList;
     }
 }

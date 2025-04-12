@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.service.MessageService;
@@ -16,6 +17,7 @@ import com.example.entity.Message;
 import com.example.exception.DuplicateUsernameException;
 import com.example.exception.LoginFailException;
 import com.example.exception.MessageClientError;
+import java.util.List;
 
 
 
@@ -68,7 +70,7 @@ public class SocialMediaController
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
-    @PostMapping("/messages")
+    @PostMapping("/messages") // User Story 3
     public ResponseEntity<Message> submitMessage(@RequestBody Message messageReceived)
     {
         Message philBob = billyBob.submitMessage(messageReceived);
@@ -80,5 +82,12 @@ public class SocialMediaController
     {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
+
+    @GetMapping("/messages") // User Story 4
+    public ResponseEntity<List<Message>> retrieveMessages()
+    {
+        List<Message> philBob = billyBob.retrieveMessages();
+        return new ResponseEntity<List<Message>>(philBob, HttpStatus.OK);
+    } 
     
 }
