@@ -112,7 +112,7 @@ public class SocialMediaController
     @PatchMapping("/messages/{messageId}") // User Story 7
     public ResponseEntity<String> updateMessage(@PathVariable int messageId, String messageText)
     {
-        String philBob = billyBob.deleteMessage(messageId, messageText);
+        String philBob = billyBob.updateMessage(messageId, messageText);
         return new ResponseEntity<String>(philBob, HttpStatus.OK);
     } 
     
