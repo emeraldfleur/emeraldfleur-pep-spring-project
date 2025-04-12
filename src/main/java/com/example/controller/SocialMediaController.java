@@ -15,6 +15,7 @@ import com.example.entity.Account;
 import com.example.entity.Message;
 import com.example.exception.DuplicateUsernameException;
 import com.example.exception.LoginFailException;
+import com.example.exception.MessageClientError;
 
 
 
@@ -73,5 +74,11 @@ public class SocialMediaController
         Message philBob = billyBob.submitMessage(messageReceived);
         return new ResponseEntity<Message>(philBob, HttpStatus.OK);
     } 
+
+    @ExceptionHandler(MessageClientError.class)
+    public ResponseEntity<Object> handleMessageClientError(MessageClientError exception)
+    {
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
     
 }
