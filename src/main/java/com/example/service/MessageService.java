@@ -69,7 +69,7 @@ public class MessageService
             return null;
         }
     }
-    public String update(int messageId, String messageText)
+    public String updateMessage(int messageId, String messageText)
     {
         if(messageRepoOurs.existsById(messageId))
         {
