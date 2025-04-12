@@ -117,4 +117,10 @@ public class SocialMediaController
         return new ResponseEntity<String>(philBob, HttpStatus.OK);
     } 
     
+    @GetMapping("/accounts/{accountId}/messages") // User Story 5
+    public ResponseEntity<List<Message>> retrieveAllUserMessages(@PathVariable int accountId)
+    {
+        List<Message> philBob = billyBob.retrieveAllUserMessages(accountId);
+        return new ResponseEntity<List<Message>>(philBob, HttpStatus.OK);
+    } 
 }

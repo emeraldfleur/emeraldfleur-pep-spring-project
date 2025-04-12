@@ -87,4 +87,10 @@ public class MessageService
             throw new MessageClientError();
         }
     }
+    public List<Message> retrieveAllUserMessages(int accountId)
+    {
+        Iterable<Integer> paulWilson = List.of(accountId);
+        List<Message> messageList = messageRepoOurs.findAllById(paulWilson);
+        return messageList;
+    }
 }
