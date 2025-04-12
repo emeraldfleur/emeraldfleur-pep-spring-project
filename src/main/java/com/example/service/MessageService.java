@@ -49,7 +49,7 @@ public class MessageService
         Optional<Message> bob = messageRepoOurs.findById(messageId);
         if(bob.isEmpty())
         {
-            return new Message();
+            return null;
         }
         else
         {
