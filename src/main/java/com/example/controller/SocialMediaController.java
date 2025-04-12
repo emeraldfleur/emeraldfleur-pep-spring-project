@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import com.example.entity.Account;
+import com.example.entity.Message;
 import com.example.exception.DuplicateUsernameException;
 import com.example.exception.LoginFailException;
 
@@ -35,7 +36,7 @@ public class SocialMediaController
     private final MessageService billyBob;
     private final AccountService phillyBobbyBrown;
 
-    @PostMapping("/register")
+    @PostMapping("/register") //User Story 1
     public ResponseEntity<Account> registerAccount(@RequestBody Account accountReceived)
     {
         Account philBob = phillyBobbyBrown.registerAccount(accountReceived);
@@ -53,7 +54,7 @@ public class SocialMediaController
         return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
 
-    @PostMapping("/login")
+    @PostMapping("/login") // User Story 2
     public ResponseEntity<Account> loginAccount(@RequestBody Account accountReceived)
     {
         Account philBob = phillyBobbyBrown.loginAccount(accountReceived);
@@ -66,5 +67,11 @@ public class SocialMediaController
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
+    @PostMapping("/messages")
+    public ResponseEntity<Message> submitMessage(@RequestBody Message messageReceived)
+    {
+        Message philBob = billyBob.submitMessage(messageReceived);
+        return new ResponseEntity<Message>(philBob, HttpStatus.OK);
+    } 
     
 }
