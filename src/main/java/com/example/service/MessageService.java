@@ -1,4 +1,5 @@
 package com.example.service;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.example.entity.Message;
 import com.example.exception.MessageClientError;
@@ -54,6 +55,18 @@ public class MessageService
         else
         {
             return bob.get();
+        }
+    }
+    public String deleteMessage(int messageId)
+    {
+        if(messageRepoOurs.existsById(messageId))
+        {
+            messageRepoOurs.deleteById(messageId);
+            return "1";
+        }
+        else
+        {
+            return null;
         }
     }
 }

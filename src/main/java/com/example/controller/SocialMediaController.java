@@ -2,6 +2,7 @@ package com.example.controller;
 
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -98,6 +99,13 @@ public class SocialMediaController
     {
         Message philBob = billyBob.retrieveMessage(messageId);
         return new ResponseEntity<Message>(philBob, HttpStatus.OK);
+    } 
+
+    @DeleteMapping("/messages/{messageId}") // User Story 6
+    public ResponseEntity<String> deleteMessage(@PathVariable int messageId)
+    {
+        String philBob = billyBob.deleteMessage(messageId);
+        return new ResponseEntity<String>(philBob, HttpStatus.OK);
     } 
     
 }
