@@ -71,7 +71,7 @@ public class MessageService
     }
     public String updateMessage(int messageId, String messageText)
     {
-        if(messageText.isBlank() || messageText.length() < 255)
+        if(messageText.isBlank() || messageText.length() > 255)
         {
             throw new MessageClientError();
         }
