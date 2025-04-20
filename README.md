@@ -1,3 +1,13 @@
+Good day. Below follows the readme for the project.
+
+User stories were satiated in controller /src/main/java/com/example/controller
+/SocialMediaController.java
+
+Custom exceptions can be found in emeraldfleur-pep-spring-project/src/main/java/com/example
+/exception/
+
+Work on repository and service classes can be seen in respective folders underneath /src/.
+
 # Project: Spring Social media blog API
 
 ## Background 
