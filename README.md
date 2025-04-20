@@ -1,4 +1,4 @@
-Good day. Below follows the readme for the project.
+Good day. Below follows the Revature provided readme for the project.
 
 User stories were satiated in controller /src/main/java/com/example/controller
 /SocialMediaController.java
